@@ -1,0 +1,120 @@
+version: 2
+
+models:
+
+  - name: dim_channels
+    description: "Dimension table containing Telegram channel information."
+
+    columns:
+
+      - name: channel_key
+        description: "Primary key for the channel dimension."
+        tests:
+          - unique
+          - not_null
+
+      - name: channel_name
+        description: "Telegram channel name."
+        tests:
+          - not_null
+
+      - name: channel_type
+        description: "Business category of the Telegram channel."
+
+      - name: first_post_date
+        description: "Date of the first message."
+
+      - name: last_post_date
+        description: "Date of the latest message."
+
+      - name: total_posts
+        description: "Total number of messages posted."
+
+      - name: avg_views
+        description: "Average number of views."
+
+
+
+  - name: dim_dates
+    description: "Calendar dimension."
+
+    columns:
+
+      - name: date_key
+        description: "Primary key for date dimension."
+        tests:
+          - unique
+          - not_null
+
+      - name: full_date
+        description: "Actual calendar date."
+        tests:
+          - not_null
+
+      - name: day_of_week
+        description: "ISO day of week."
+
+      - name: day_name
+        description: "Day name."
+
+      - name: week_of_year
+        description: "Week number."
+
+      - name: month
+        description: "Month number."
+
+      - name: month_name
+        description: "Month name."
+
+      - name: quarter
+        description: "Quarter."
+
+      - name: year
+        description: "Year."
+
+      - name: is_weekend
+        description: "Weekend indicator."
+
+
+
+  - name: fct_messages
+    description: "Fact table containing Telegram messages."
+
+    columns:
+
+      - name: message_id
+        description: "Primary key for the fact table."
+        tests:
+          - unique
+          - not_null
+
+      - name: channel_key
+        description: "Foreign key to dim_channels."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_channels')
+              field: channel_key
+
+      - name: date_key
+        description: "Foreign key to dim_dates."
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_dates')
+              field: date_key
+
+      - name: message_text
+        description: "Telegram message text."
+
+      - name: message_length
+        description: "Number of characters in the message."
+
+      - name: view_count
+        description: "Number of message views."
+
+      - name: forward_count
+        description: "Number of forwards."
+
+      - name: has_image
+        description: "Whether the message contains an image."
