@@ -8,3 +8,6 @@ fastapi
 uvicorn
 sqlalchemy
 pydantic
+dagster 
+dagster-webserver
+dbt-postgres
