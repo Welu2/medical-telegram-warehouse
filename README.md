@@ -1,4 +1,3 @@
-````markdown
 # 📦 Medical Telegram Data Warehouse
 
 An end-to-end data engineering pipeline that extracts medical product data from Ethiopian Telegram channels, transforms it using **dbt**, enriches image data with **YOLOv8** object detection, orchestrates workflows using **Dagster**, stores results in **PostgreSQL**, and exposes analytics through a **FastAPI** REST API.
@@ -255,5 +254,3 @@ This data platform enables:
 - Real-time data ingestion using Apache Kafka
 - Advanced NLP for medical entity extraction
 
----
-````
