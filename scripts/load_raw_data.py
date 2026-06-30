@@ -7,11 +7,12 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-DB_NAME = os.getenv("POSTGRES_DB")
-DB_USER = os.getenv("POSTGRES_USER")
-DB_PASSWORD = os.getenv("POSTGRES_PASSWORD")
-DB_HOST = os.getenv("POSTGRES_HOST", "localhost")
-DB_PORT = os.getenv("POSTGRES_PORT", "5432")
+# Read from Docker injected variables first; fallback to .env config if running locally
+DB_NAME = os.getenv("DB_NAME") or os.getenv("POSTGRES_DB")
+DB_USER = os.getenv("DB_USER") or os.getenv("POSTGRES_USER")
+DB_PASSWORD = os.getenv("DB_PASSWORD") or os.getenv("POSTGRES_PASSWORD")
+DB_HOST = os.getenv("DB_HOST") or os.getenv("POSTGRES_HOST", "db")
+DB_PORT = os.getenv("DB_PORT") or os.getenv("POSTGRES_PORT", "5432")
 
 DATA_DIR = Path("data")
 

@@ -16,6 +16,7 @@ target
 
 # VS Code
 .vscode/
+.dagster_home/
 
 # Logs
 logs/
