@@ -4,3 +4,7 @@ tqdm
 psycopg2-binary
 ultralytics
 opencv-python
+fastapi
+uvicorn
+sqlalchemy
+pydantic

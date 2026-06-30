@@ -12,6 +12,7 @@ env/
 .env
 target
 .user.yml
+*.csv
 
 # VS Code
 .vscode/
